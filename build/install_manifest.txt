@@ -1,0 +1,4 @@
+/usr/local/lib/libmdmodel.a
+/usr/local/include/Document.h
+/usr/local/include/Node.h
+/usr/local/include/Parser.h

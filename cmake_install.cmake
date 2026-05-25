@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/ilan/Code/mdmodel/build/libmdmodel.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/ilan/Code/mdmodel/libmdmodel.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -54,7 +54,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel/mdmodelTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel/mdmodelTargets.cmake"
-         "/home/ilan/Code/mdmodel/build/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets.cmake")
+         "/home/ilan/Code/mdmodel/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel/mdmodelTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -67,9 +67,9 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel" TYPE FILE FILES "/home/ilan/Code/mdmodel/build/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel" TYPE FILE FILES "/home/ilan/Code/mdmodel/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel" TYPE FILE FILES "/home/ilan/Code/mdmodel/build/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets-noconfig.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/mdmodel" TYPE FILE FILES "/home/ilan/Code/mdmodel/CMakeFiles/Export/8bb723fbd0ada2ff1af2ebf7890a69e7/mdmodelTargets-noconfig.cmake")
   endif()
 endif()
 
@@ -81,5 +81,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ilan/Code/mdmodel/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ilan/Code/mdmodel/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

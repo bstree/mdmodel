@@ -14,8 +14,9 @@ TEST_CASE("heading parsing")
         "# Layout\n"
         "  - Indicators\n"
         "    - BatteryIndicator\n"
+        "    - BluetoothIndicator\n"
         "# BatteryIndicator\n"
-        " - Type: StatedImage\n";
+        "  - Type: StatedImage\n";
 
     auto doc = Parser().Parse(markdown);
 
@@ -35,6 +36,10 @@ TEST_CASE("heading parsing")
     REQUIRE_MESSAGE(it != doc->ChildrenEnd(), "Failed to find BatteryIndicator node");
     CHECK_MESSAGE(it->second->Name() == "BatteryIndicator", "Expected node name 'BatteryIndicator', got '" << it->second->Name() << "'");
 
+    it = doc->Find("/Layout/Indicators/BluetoothIndicator");
+    REQUIRE_MESSAGE(it != doc->ChildrenEnd(), "Failed to find BluetoothIndicator node");
+    CHECK_MESSAGE(it->second->Name() == "BluetoothIndicator", "Expected node name 'BluetoothIndicator', got '" << it->second->Name() << "'");
+    
     it = doc->Find("/BatteryIndicator/Type");
     REQUIRE_MESSAGE(it != doc->ChildrenEnd(), "Failed to find Type node");
     CHECK_MESSAGE(it->second->Name() == "Type", "Expected node name 'Type', got '" << it->second->Name() << "'");

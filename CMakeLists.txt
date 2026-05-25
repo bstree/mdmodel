@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(mdmodel)
+project(mdmodel VERSION 1.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,7 +16,8 @@ add_library(mdmodel
 
 target_include_directories(mdmodel
     PUBLIC
-        include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
         ${CMARK_INCLUDE_DIRS}
 )
 
@@ -25,7 +26,13 @@ target_link_libraries(mdmodel
         ${CMARK_LIBRARIES}
 )
 
+set_target_properties(mdmodel PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION 1
+)
+
 option(BUILD_TESTS "Build mdmodel tests" ON)
+
 if(BUILD_TESTS)
     enable_testing()
 
@@ -39,7 +46,7 @@ if(BUILD_TESTS)
     )
 
     target_include_directories(mdmodel_test
-        PRIVATE 
+        PRIVATE
             external/doctest
     )
 
@@ -47,10 +54,18 @@ if(BUILD_TESTS)
 endif()
 
 install(TARGETS mdmodel
+    EXPORT mdmodelTargets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
 )
 
 install(DIRECTORY include/
     DESTINATION include
+)
+
+install(EXPORT mdmodelTargets
+    FILE mdmodelTargets.cmake
+    NAMESPACE mdmodel::
+    DESTINATION lib/cmake/mdmodel
 )

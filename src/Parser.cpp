@@ -28,6 +28,21 @@ namespace mdmodel
         return text;
     }
 
+    static std::string_view Trim(std::string_view text)
+    {
+        while (!text.empty() && std::isspace(text.front()))
+        {
+            text.remove_prefix(1);
+        }
+
+        while (!text.empty() && std::isspace(text.back()))
+        {
+            text.remove_suffix(1);
+        }
+
+        return text;
+    }
+
     NodePtr Parser::Parse(const std::string& markdown)
     {
         auto native = cmark_parse_document(
@@ -67,21 +82,28 @@ namespace mdmodel
                 case CMARK_NODE_HEADING:
                 case CMARK_NODE_PARAGRAPH:
                 {
-                    auto text = GetNodeText(child);
-                    auto pos = text.find_first_of(": ");
+                    auto text = Trim(GetNodeText(child));
+                    auto pos = text.find(':');
                     if (pos == std::string_view::npos)
                     {
                         auto node = std::make_unique<Node>(text);
                         lastHeadingNode = node.get();
                         parent.AddChild(std::move(node));
-                        std::cout << "Parsed heading: " << parent.Name() << "/" << text << std::endl;
                         continue;
                     }
 
-                    auto node = std::make_unique<Node>(text.substr(0, pos));
+                    auto key = Trim(text.substr(0, pos));
+                    auto value = Trim(text.substr(pos + 1));
+
+                    auto node = std::make_unique<Node>(key);
                     auto& field = *node;
+
                     parent.AddChild(std::move(node));
-                    field.AddChild(std::make_unique<Node>(text.substr(pos + 2)));
+
+                    if (!value.empty())
+                    {
+                        field.AddChild(std::make_unique<Node>(value));
+                    }
 
                     std::cout << "Parsed heading: " << parent.Name() << "/" << text << std::endl;
                     break;
