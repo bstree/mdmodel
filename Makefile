@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /home/ilan/Code/mdmodel
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -184,19 +174,6 @@ mdmodel/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel.dir/build.make CMakeFiles/mdmodel.dir/build
 .PHONY : mdmodel/fast
 
-#=============================================================================
-# Target rules for targets named mdmodel_test
-
-# Build rule for target.
-mdmodel_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mdmodel_test
-.PHONY : mdmodel_test
-
-# fast build rule for target.
-mdmodel_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel_test.dir/build.make CMakeFiles/mdmodel_test.dir/build
-.PHONY : mdmodel_test/fast
-
 src/Document.o: src/Document.cpp.o
 .PHONY : src/Document.o
 
@@ -269,30 +246,6 @@ src/Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel.dir/build.make CMakeFiles/mdmodel.dir/src/Parser.cpp.s
 .PHONY : src/Parser.cpp.s
 
-tests/Test.o: tests/Test.cpp.o
-.PHONY : tests/Test.o
-
-# target to build an object file
-tests/Test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel_test.dir/build.make CMakeFiles/mdmodel_test.dir/tests/Test.cpp.o
-.PHONY : tests/Test.cpp.o
-
-tests/Test.i: tests/Test.cpp.i
-.PHONY : tests/Test.i
-
-# target to preprocess a source file
-tests/Test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel_test.dir/build.make CMakeFiles/mdmodel_test.dir/tests/Test.cpp.i
-.PHONY : tests/Test.cpp.i
-
-tests/Test.s: tests/Test.cpp.s
-.PHONY : tests/Test.s
-
-# target to generate assembly for a file
-tests/Test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mdmodel_test.dir/build.make CMakeFiles/mdmodel_test.dir/tests/Test.cpp.s
-.PHONY : tests/Test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -305,9 +258,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... mdmodel"
-	@echo "... mdmodel_test"
 	@echo "... src/Document.o"
 	@echo "... src/Document.i"
 	@echo "... src/Document.s"
@@ -317,9 +268,6 @@ help:
 	@echo "... src/Parser.o"
 	@echo "... src/Parser.i"
 	@echo "... src/Parser.s"
-	@echo "... tests/Test.o"
-	@echo "... tests/Test.i"
-	@echo "... tests/Test.s"
 .PHONY : help
 
 
