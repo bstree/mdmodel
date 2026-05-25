@@ -2,6 +2,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <optional>
 
 namespace mdmodel 
 {
@@ -23,7 +24,10 @@ namespace mdmodel
         NodeIter ChildrenEnd() { return m_children.end(); }
 
         std::string_view Name() const;
-        std::string_view Value() const;
+        std::optional<std::string> StringValue() const;
+        std::optional<int> IntValue() const;
+        std::optional<bool> BoolValue() const;
+        std::optional<double> DoubleValue() const;
 
     private:
         std::string_view m_name;

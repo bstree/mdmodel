@@ -1,51 +1,161 @@
 # mdmodel
 
-mdmodel is a small C++ Markdown parser library that builds a node tree
-from CommonMark input. It's header-only-compatible for simple projects and
-provides a CMake target for linking into larger applications.
+`mdmodel` is a lightweight C++ semantic Markdown modeling library built on top of CommonMark (`cmark`).
 
-**Quick Start**
+Instead of treating Markdown as a rendering format only, `mdmodel` exposes Markdown documents as a semantic hierarchical node tree that can be used for:
 
-Prerequisites: CMake (>= 3.10), a C++ compiler (GCC/Clang/MSVC).
+- Configuration systems
+- UI DSLs
+- Structured human-readable data
+- Semantic parsing
+- Tree-based application models
 
-Build (default: builds library and tests):
+The library acts as an adapter layer over `cmark`, providing a clean C++ API for traversing and interpreting Markdown documents.
 
-```bash
+## Design Goals
+
+- Lightweight
+- Minimal allocations
+- Semantic tree abstraction
+- Human-readable configuration
+- No rendering logic
+- No application-specific behavior
+- Separation between parsing and semantic interpretation
+
+## Non-Goals
+
+`mdmodel` is **not**:
+
+- A Markdown renderer
+- A UI framework
+- A replacement for CommonMark
+- A schema system
+
+The library focuses only on exposing a semantic tree structure over Markdown documents.
+
+---
+
+## Example
+
+Markdown input:
+
+```markdown
+# Window
+  - width: 240
+  - height: 64
+
+# Layout
+  - StatusBar
+    - BatteryIndicator
+    - BluetoothIndicator
+```
+
+Semantic tree:
+
+Window
+ ├── width
+ │    └── 240
+ └── height
+      └── 64
+
+Layout
+ └── StatusBar
+      ├── BatteryIndicator
+      └── BluetoothIndicator
+
+
+
+## Architecture
+
+        Markdown Text
+             ↓
+           cmark
+             ↓
+      mdmodel AST Adapter
+             ↓
+Application-specific semantic parsers
+
+
+
+The library intentionally keeps semantic interpretation outside the core model layer.
+
+For example:
+
+auto width = node.IntValue();
+auto enabled = node.BoolValue();
+
+Typed accessors are interpreted lazily while the underlying model remains text-based.
+
+
+
+## Building
+
+Requirements:
+
+CMake >= 3.10
+C++17 compiler
+libcmark
+
+Build:
+
 mkdir -p build
 cd build
 cmake ..
-cmake --build .
-```
+make
 
 Run tests:
 
-```bash
-cd build
-ctest -V
-# or run the test binary directly
-./mdmodel_test
+ctest
+
+Install system-wide:
+
+sudo cmake --install .
+sudo ldconfig
+
+
+
+
+## Using mdmodel
+
+After installation:
+
+find_library(MDMODEL_LIB mdmodel REQUIRED)
+
+target_link_libraries(myapp PRIVATE ${MDMODEL_LIB})
+
+Example include:
+``` c++
+#include <mdmodel/Document.hpp>
 ```
 
-Disable building tests:
 
-```bash
-mkdir -p build
-cd build
-cmake -DBUILD_TESTS=OFF ..
-cmake --build .
-```
 
-Usage notes
-- The public headers are in the `include/` directory. Link against the
-	`mdmodel` target from your CMake project: `target_link_libraries(myapp PRIVATE mdmodel)`.
-- The test executable is `mdmodel_test` (built when `BUILD_TESTS=ON`).
+## Intended Usage
 
-Contributing
-- Bug reports and PRs are welcome. Please follow the existing code style and
-	add tests for new features when possible.
+mdmodel was originally created as part of a Markdown-driven UI system experiment, where Markdown documents describe UI layouts, widgets, and bindings using hierarchical semantic structures.
 
-License
-- This project is available under the terms in the `LICENSE` file.
+The library is intentionally generic enough to support other structured Markdown applications.
 
-Contact
-- Open an issue for questions or feature requests.
+
+
+## Future Direction
+
+###Potential future additions:
+
+Typed value helpers
+Tree traversal iterators
+Semantic query helpers
+Config-oriented parsing utilities
+Optional schema validation layers
+
+
+##License
+
+See LICENSE.
+
+
+## Contributing
+
+Issues, ideas, and pull requests are welcome.
+
+

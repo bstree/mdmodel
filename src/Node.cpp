@@ -24,12 +24,67 @@ namespace mdmodel
         return m_name;
     }
 
-    std::string_view Node::Value() const 
+    std::optional<std::string> Node::StringValue() const 
     {
-        std::string_view value;
         if (m_children.size() == 1)
         {
-            value = m_children.begin()->second->Name();
+            return std::string(m_children.begin()->second->Name());
+        }
+
+        return std::nullopt;
+    }
+
+
+    std::optional<int> Node::IntValue() const
+    {
+        std::optional<int> value;
+        if (m_children.size() == 1)
+        {
+            try 
+            {
+                value = std::stoi(std::string(m_children.begin()->second->Name()));
+            }
+            catch (const std::exception&)
+            {
+                // Not a valid integer, return empty optional
+            }
+        }
+
+        return value;
+    }
+
+    std::optional<bool> Node::BoolValue() const
+    {
+        std::optional<bool> value;
+        if (m_children.size() == 1)
+        {
+            std::string_view str_value = m_children.begin()->second->Name();
+            if (str_value == "true")
+            {
+                value = true;
+            }
+            else if (str_value == "false")
+            {
+                value = false;
+            }
+        }
+
+        return value;
+    }
+
+    std::optional<double> Node::DoubleValue() const
+    {
+        std::optional<double> value;
+        if (m_children.size() == 1)
+        {
+            try 
+            {
+                value = std::stod(std::string(m_children.begin()->second->Name()));
+            }
+            catch (const std::exception&)
+            {
+                // Not a valid double, return empty optional
+            }
         }
 
         return value;
