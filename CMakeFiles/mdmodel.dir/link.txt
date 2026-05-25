@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmdmodel.a CMakeFiles/mdmodel.dir/src/Node.cpp.o CMakeFiles/mdmodel.dir/src/Document.cpp.o CMakeFiles/mdmodel.dir/src/Parser.cpp.o
-/usr/bin/ranlib libmdmodel.a

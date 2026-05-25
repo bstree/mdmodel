@@ -1,0 +1,19 @@
+Start testing: May 25 19:24 IDT
+----------------------------------------------------------
+Unable to find executable: /home/ilan/Code/mdmodel/mdmodel_test
+1/1 Testing: mdmodel_test
+1/1 Test: mdmodel_test
+Command: ""
+Directory: /home/ilan/Code/mdmodel
+"mdmodel_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"mdmodel_test" end time: May 25 19:24 IDT
+"mdmodel_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 25 19:24 IDT

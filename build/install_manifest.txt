@@ -1,6 +1,6 @@
 /usr/local/lib/libmdmodel.a
-/usr/local/include/Document.h
-/usr/local/include/Node.h
-/usr/local/include/Parser.h
+/usr/local/include/mdmodel/Document.h
+/usr/local/include/mdmodel/Node.h
+/usr/local/include/mdmodel/Parser.h
 /usr/local/lib/cmake/mdmodel/mdmodelTargets.cmake
 /usr/local/lib/cmake/mdmodel/mdmodelTargets-noconfig.cmake

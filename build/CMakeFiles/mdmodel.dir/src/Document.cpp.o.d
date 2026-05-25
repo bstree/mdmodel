@@ -1,8 +1,8 @@
 CMakeFiles/mdmodel.dir/src/Document.cpp.o: \
  /home/ilan/Code/mdmodel/src/Document.cpp /usr/include/stdc-predef.h \
- /home/ilan/Code/mdmodel/include/Document.h \
- /home/ilan/Code/mdmodel/include/Node.h /usr/include/c++/13/string \
- /usr/include/c++/13/bits/requires_hosted.h \
+ /home/ilan/Code/mdmodel/include/mdmodel/Document.h \
+ /home/ilan/Code/mdmodel/include/mdmodel/Node.h \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

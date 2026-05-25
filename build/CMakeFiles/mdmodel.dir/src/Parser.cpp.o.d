@@ -1,8 +1,8 @@
 CMakeFiles/mdmodel.dir/src/Parser.cpp.o: \
  /home/ilan/Code/mdmodel/src/Parser.cpp /usr/include/stdc-predef.h \
- /home/ilan/Code/mdmodel/include/Parser.h \
- /home/ilan/Code/mdmodel/include/Node.h /usr/include/c++/13/string \
- /usr/include/c++/13/bits/requires_hosted.h \
+ /home/ilan/Code/mdmodel/include/mdmodel/Parser.h \
+ /home/ilan/Code/mdmodel/include/mdmodel/Node.h \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -167,7 +167,7 @@ CMakeFiles/mdmodel.dir/src/Parser.cpp.o: \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/stl_queue.h \
- /home/ilan/Code/mdmodel/include/Document.h /usr/include/cmark.h \
+ /home/ilan/Code/mdmodel/include/mdmodel/Document.h /usr/include/cmark.h \
  /usr/include/cmark_export.h /usr/include/cmark_version.h \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/iostream \
  /usr/include/c++/13/ostream /usr/include/c++/13/ios \

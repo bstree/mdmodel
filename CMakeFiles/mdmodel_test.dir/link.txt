@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/mdmodel_test.dir/tests/Test.cpp.o -o mdmodel_test  libmdmodel.a -lcmark 

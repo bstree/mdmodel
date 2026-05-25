@@ -1,5 +1,5 @@
-#include "Document.h"
-#include "cmark.h"
+#include "mdmodel/Document.h"
+#include <cmark.h>
 
 namespace mdmodel
 {
