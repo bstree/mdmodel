@@ -3,25 +3,23 @@
 #include <memory>
 #include <unordered_map>
 #include <optional>
+#include <functional>
 
 namespace mdmodel 
 {
     class Node;
     using NodePtr = std::unique_ptr<Node>;
-    using NodeIter = std::unordered_map<std::string, NodePtr>::iterator;
 
     class Node 
     {
     public:
         Node(std::string_view name);
-        ~Node() = default;
+        virtual ~Node() = default;
 
         void AddChild(NodePtr&& child);
-        NodeIter Child(std::string_view name);
-
-        NodeIter Find(std::string_view path);
-        NodeIter ChildrenBegin() { return m_children.begin(); }
-        NodeIter ChildrenEnd() { return m_children.end(); }
+        Node* Child(std::string_view name) const;
+        Node* Find(std::string_view path) const;
+        void ForEach(std::function<void(Node&)> function);
 
         std::string_view Name() const;
         std::optional<std::string> StringValue() const;

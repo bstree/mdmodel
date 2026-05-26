@@ -75,7 +75,6 @@ namespace mdmodel
              child = cmark_node_next(child))
         {            
             auto type = cmark_node_get_type(child);
-            std::cout << "Processing node type: " << cmark_node_get_type_string(child) << std::endl;
 
             switch (type)
             {                

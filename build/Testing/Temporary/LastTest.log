@@ -1,0 +1,72 @@
+Start testing: May 26 03:35 IDT
+----------------------------------------------------------
+1/1 Testing: mdmodel_test
+1/1 Test: mdmodel_test
+Command: "/home/ilan/Code/mdmodel/build/mdmodel_test"
+Directory: /home/ilan/Code/mdmodel/build
+"mdmodel_test" start time: May 26 03:35 IDT
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.5.0"
+[doctest] run with "--help" for options
+Processing node type: heading
+Processing node type: list
+Processing node type: heading
+Processing node type: list
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: paragraph
+Processing node type: list
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Type: StatedImage
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Width: 24
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Height: 24.5
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Visible: true
+Processing node type: item
+Processing node type: item
+Processing node type: paragraph
+Processing node type: paragraph
+Processing node type: heading
+Processing node type: list
+Processing node type: heading
+Processing node type: list
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: item
+Processing node type: paragraph
+Processing node type: list
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Type: StatedImage
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Width: 24
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Height: 24.5
+Processing node type: paragraph
+Parsed heading: BatteryIndicator/Visible: true
+Processing node type: item
+Processing node type: item
+Processing node type: paragraph
+Processing node type: paragraph
+BatteryIndicator
+Layout
+===============================================================================
+[doctest] test cases:  2 |  2 passed | 0 failed | 0 skipped
+[doctest] assertions: 22 | 22 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"mdmodel_test" end time: May 26 03:35 IDT
+"mdmodel_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 26 03:35 IDT

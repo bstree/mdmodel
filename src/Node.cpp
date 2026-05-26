@@ -14,9 +14,15 @@ namespace mdmodel
         m_children.emplace(std::string(child->Name()), std::move(child));
     }
 
-    NodeIter Node::Child(std::string_view name) 
+    Node* Node::Child(std::string_view name) const
     {
-        return m_children.find(std::string(name));
+        Node* child = nullptr;
+        auto it = m_children.find(std::string(name));
+        if (it != m_children.end())
+        {
+            child = it->second.get();
+        }
+        return child;
     }
 
     std::string_view Node::Name() const 
@@ -114,20 +120,33 @@ namespace mdmodel
     }
 
     // path is expected to be in the format of "/child1/child2/child3"
-    NodeIter Node::Find(std::string_view path)
+    Node* Node::Find(std::string_view path) const
     {
         std::vector<std::string_view> path_parts = SplitPath(path);
         if (path_parts.empty())
         {
-            return ChildrenEnd(); // invalid path
+            return nullptr; // invalid path
         }
 
-        NodeIter it = Child(path_parts[0]);
-        for (size_t i = 1; i < path_parts.size() && it != ChildrenEnd(); ++i)
+        // Start traversal from this node, then descend through each path part.
+        Node* node = const_cast<Node*>(this);
+        for (const auto& part : path_parts)
         {
-            it = it->second->Child(path_parts[i]);
+            if (!node)
+            {
+                return nullptr; // path not found
+            }
+            node = node->Child(part);
         }
 
-        return it;
+        return node;
+    }
+
+    void Node::ForEach(std::function<void(Node&)> function)
+    {
+        for (auto& pair : m_children)
+        {
+            function(*pair.second);
+        }
     }
 }
